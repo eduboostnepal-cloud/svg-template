@@ -1,0 +1,272 @@
+<svg width="100%" viewBox="0 0 680 460" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Bragg's Law – X-ray diffraction by crystal planes</title>
+  <desc>Precise Bragg's law diagram showing two parallel crystal planes, glancing angle theta, path difference 2d·sin(theta), and the law 2d·sin(theta)=n·lambda.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="context-stroke"
+            stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!--
+    GEOMETRY (all coordinates computed precisely)
+    ─────────────────────────────────────────────
+    Plane 1 : y = 195
+    Plane 2 : y = 305   →  d = 110 px  (represents inter-planar spacing d)
+
+    Glancing angle θ ≈ 33°  (sin33°≈0.545, cos33°≈0.839)
+    Reflection point P on Plane 1 : (340, 195)
+    Reflection point Q on Plane 2 : (340, 305)
+
+    Ray direction unit vector (going RIGHT-DOWN at θ below horizontal):
+      dx = cos33° = 0.839,  dy = sin33° = 0.545  (downward positive)
+
+    Incident Ray 1 arrives at P from upper-left:
+      start = P - 180·(dx,dy) = (340-151, 195-98) = (189, 97)
+      end   = P = (340, 195)
+    Reflected Ray 1 leaves P to upper-right:
+      start = P = (340, 195)
+      end   = P + 180·(dx,-dy) = (340+151, 195-98) = (491, 97)
+
+    Incident Ray 2 arrives at Q from upper-left (same direction, parallel to Ray 1):
+      start = Q - 250·(dx,dy) = (340-210, 305-136) = (130, 169)  → but y<195? tweak:
+      start = (130, 133)  i.e. 250 units back from Q
+      actual: Q - t·(dx,dy) such that start y is same as Ray1 start y = 97
+        t = (305-97)/dy = 208/0.545 = 382
+        start_x = 340 - 382·0.839 = 340-320 = 20  (too far left)
+      Use t=200: start = (340-168, 305-109) = (172, 196) — still too low
+      Use same y-start as Ray1 (y=97): t=(305-97)/0.545=382 → x=340-321=19, clip to x=60
+        t'=(305-195)/0.545=202 → mid point at (340-170,195)=(170,195)
+      Simply: draw Ray2 start at (100,97) going to Q=(340,305):
+        vector = (240,208), length=318, unit=(0.755,0.655)
+        This gives different angle — NOT parallel to Ray1. Must keep same angle.
+
+      Correct parallel Ray2:
+        Same direction as Ray1: unit=(0.839,0.545)
+        Q = (340,305). Start far enough back:
+          start = Q - t·(0.839,0.545)
+          Want start_y < 110: (305 - 0.545t) < 110 → t > 358
+          start_x = 340 - 0.839·358 = 340-300 = 40  (just fits)
+          Use t=340: start=(340-285,305-185)=(55,120)
+      Ray2 incident: (55,120) → (340,305)   ✓ parallel to Ray1
+
+    Reflected Ray 2 from Q, same angle mirrored:
+      direction: (0.839,-0.545)  (going right-up)
+      end = Q + 340·(0.839,-0.545) = (340+285, 305-185) = (625,120)
+
+    ─── PERPENDICULARS from P to Ray2 ───
+    M = foot of perpendicular from P=(340,195) onto the line of INCIDENT Ray 2.
+    Incident Ray2 line: passes through Q=(340,305), direction unit u=(0.839,0.545)
+      Parametric: (340+0.839·t, 305+0.545·t)  (t negative goes back toward start)
+      Vector PQ = Q-P = (0,110)
+      t_M = PQ · u = 0·0.839 + 110·0.545 = 59.95 ≈ 60
+      M = Q + (-60)·u = (340-50.3, 305-32.7) = (289.7, 272.3) ≈ (290,272)
+
+    N = foot of perpendicular from P=(340,195) onto the line of REFLECTED Ray 2.
+    Reflected Ray2 line: passes through Q=(340,305), direction unit v=(0.839,-0.545)
+      Parametric: (340+0.839·s, 305-0.545·s)
+      Vector PQ = (0,110)
+      s_N = PQ · v = 0·0.839 + 110·(-0.545) = -59.95 ≈ -60
+      N = Q + 60·v = (340+50.3, 305-32.7) = (390.3, 272.3) ≈ (390,272)
+
+    Path difference = MQ + QN
+    MQ = distance(M,Q) = distance((290,272),(340,305)) = sqrt(50²+33²) = sqrt(2500+1089) = sqrt(3589) ≈ 60  ✓ = d·sin(θ)
+    QN = same = 60  →  total = 120 = 2d·sin(θ)  ✓
+  -->
+
+  <!-- ══════════════════════════════════
+       BACKGROUND SUBTLE GRID (crystal lattice feel)
+  ══════════════════════════════════ -->
+
+  <!-- ══════════════════════════════════
+       PLANE 1  y=195
+  ══════════════════════════════════ -->
+  <line x1="44" y1="195" x2="636" y2="195" stroke="#444441" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- atom dots plane 1 -->
+  <circle cx="80"  cy="195" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="160" cy="195" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="240" cy="195" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="320" cy="195" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="400" cy="195" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="480" cy="195" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="560" cy="195" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <!-- Plane 1 label -->
+  <text font-family="Georgia, serif" font-size="13" x="608" y="184" fill="#5F5E5A">Plane 1</text>
+
+  <!-- ══════════════════════════════════
+       PLANE 2  y=305
+  ══════════════════════════════════ -->
+  <line x1="44" y1="305" x2="636" y2="305" stroke="#444441" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- atom dots plane 2 -->
+  <circle cx="80"  cy="305" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="160" cy="305" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="240" cy="305" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="320" cy="305" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="400" cy="305" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="480" cy="305" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <circle cx="560" cy="305" r="7" fill="#2C2C2A" stroke="#888780" stroke-width="1"/>
+  <!-- Plane 2 label -->
+  <text font-family="Georgia, serif" font-size="13" x="608" y="294" fill="#5F5E5A">Plane 2</text>
+
+  <!-- ══════════════════════════════════
+       d-SPACING ARROW  (left margin)
+  ══════════════════════════════════ -->
+  <line x1="30" y1="195" x2="30" y2="305" stroke="#993C1D" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="24" y1="195" x2="36" y2="195" stroke="#993C1D" stroke-width="1.5"/>
+  <line x1="24" y1="305" x2="36" y2="305" stroke="#993C1D" stroke-width="1.5"/>
+  <line x1="30" y1="195" x2="30" y2="216" stroke="#993C1D" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="30" y1="305" x2="30" y2="284" stroke="#993C1D" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold"
+        x="14" y="256" text-anchor="middle" fill="#993C1D">d</text>
+
+  <!-- ══════════════════════════════════
+       NORMAL LINE at P (dashed vertical)
+  ══════════════════════════════════ -->
+  <line x1="340" y1="115" x2="340" y2="195"
+        stroke="#888780" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text font-family="Georgia, serif" font-size="11" x="346" y="132" fill="#888780">Normal</text>
+
+  <!-- ══════════════════════════════════
+       RAY 1 — INCIDENT  (189,97)→(340,195)  BLUE
+  ══════════════════════════════════ -->
+  <line x1="189" y1="97" x2="336" y2="193"
+        stroke="#185FA5" stroke-width="2.5" stroke-linecap="round"
+        marker-end="url(#arr)"/>
+
+  <!-- RAY 1 — REFLECTED  (340,195)→(491,97)  BLUE -->
+  <line x1="344" y1="193" x2="491" y2="97"
+        stroke="#185FA5" stroke-width="2.5" stroke-linecap="round"
+        marker-end="url(#arr)"/>
+
+  <!-- Ray 1 label -->
+  <text font-family="Georgia, serif" font-size="13" font-weight="bold"
+        x="168" y="88" fill="#185FA5">Incident Ray 1</text>
+  <text font-family="Georgia, serif" font-size="13" font-weight="bold"
+        x="450" y="88" fill="#185FA5">Reflected Ray 1</text>
+
+  <!-- ══════════════════════════════════
+       RAY 2 — INCIDENT  (55,120)→(340,305)  ORANGE
+  ══════════════════════════════════ -->
+  <line x1="55" y1="120" x2="336" y2="303"
+        stroke="#D85A30" stroke-width="2.5" stroke-linecap="round"
+        marker-end="url(#arr)"/>
+
+  <!-- RAY 2 — REFLECTED  (340,305)→(625,120)  ORANGE -->
+  <line x1="344" y1="303" x2="625" y2="120"
+        stroke="#D85A30" stroke-width="2.5" stroke-linecap="round"
+        marker-end="url(#arr)"/>
+
+  <!-- Ray 2 labels -->
+  <text font-family="Georgia, serif" font-size="13" font-weight="bold"
+        x="50" y="110" fill="#D85A30">Incident Ray 2</text>
+  <text font-family="Georgia, serif" font-size="13" font-weight="bold"
+        x="524" y="110" fill="#D85A30">Reflected Ray 2</text>
+
+  <!-- ══════════════════════════════════
+       PATH DIFFERENCE  M→Q→N  (green segments)
+       M=(290,272)  Q=(340,305)  N=(390,272)
+  ══════════════════════════════════ -->
+  <!-- dashed helper lines from P to M and P to N -->
+  <line x1="340" y1="195" x2="290" y2="272"
+        stroke="#888780" stroke-width="0.9" stroke-dasharray="4 3"/>
+  <line x1="340" y1="195" x2="390" y2="272"
+        stroke="#888780" stroke-width="0.9" stroke-dasharray="4 3"/>
+
+  <!-- right-angle mark at M -->
+  <path d="M 295 268 L 299 274 L 293 278" fill="none" stroke="#0F6E56" stroke-width="1.2"/>
+  <!-- right-angle mark at N -->
+  <path d="M 385 268 L 381 274 L 387 278" fill="none" stroke="#0F6E56" stroke-width="1.2"/>
+
+  <!-- M→Q green -->
+  <line x1="290" y1="272" x2="340" y2="305"
+        stroke="#0F6E56" stroke-width="3" stroke-linecap="round"/>
+  <!-- Q→N green -->
+  <line x1="340" y1="305" x2="390" y2="272"
+        stroke="#0F6E56" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- M, Q, N point dots -->
+  <circle cx="290" cy="272" r="4" fill="#0F6E56"/>
+  <circle cx="390" cy="272" r="4" fill="#0F6E56"/>
+
+  <!-- M, N labels -->
+  <text font-family="Georgia, serif" font-style="italic" font-size="13" font-weight="bold"
+        x="276" y="268" fill="#0F6E56">M</text>
+  <text font-family="Georgia, serif" font-style="italic" font-size="13" font-weight="bold"
+        x="394" y="268" fill="#0F6E56">N</text>
+
+  <!-- MQ and QN segment labels -->
+  <text font-family="Georgia, serif" font-size="12" font-weight="bold"
+        x="298" y="298" fill="#0F6E56">d·sinθ</text>
+  <text font-family="Georgia, serif" font-size="12" font-weight="bold"
+        x="343" y="298" fill="#0F6E56">d·sinθ</text>
+
+  <!-- ══════════════════════════════════
+       REFLECTION POINTS P and Q
+  ══════════════════════════════════ -->
+  <circle cx="340" cy="195" r="6" fill="#185FA5" stroke="white" stroke-width="1.5"/>
+  <text font-family="Georgia, serif" font-style="italic" font-size="14" font-weight="bold"
+        x="348" y="192" fill="#185FA5">P</text>
+
+  <circle cx="340" cy="305" r="6" fill="#D85A30" stroke="white" stroke-width="1.5"/>
+  <text font-family="Georgia, serif" font-style="italic" font-size="14" font-weight="bold"
+        x="348" y="302" fill="#D85A30">Q</text>
+
+  <!-- ══════════════════════════════════
+       GLANCING ANGLE θ ARCS AT P
+  ══════════════════════════════════ -->
+  <!-- θ on incident side (left of normal) -->
+  <path d="M 316 195 A 24 24 0 0 1 328 174"
+        fill="none" stroke="#185FA5" stroke-width="2"/>
+  <text font-family="Georgia, serif" font-style="italic" font-size="14" font-weight="bold"
+        x="303" y="189" fill="#185FA5">θ</text>
+
+  <!-- θ on reflected side (right of normal) -->
+  <path d="M 352 174 A 24 24 0 0 1 364 195"
+        fill="none" stroke="#185FA5" stroke-width="2"/>
+  <text font-family="Georgia, serif" font-style="italic" font-size="14" font-weight="bold"
+        x="364" y="189" fill="#185FA5">θ</text>
+
+  <!-- θ at Q on incident side -->
+  <path d="M 317 305 A 23 23 0 0 1 328 285"
+        fill="none" stroke="#D85A30" stroke-width="2"/>
+  <text font-family="Georgia, serif" font-style="italic" font-size="14" font-weight="bold"
+        x="305" y="299" fill="#D85A30">θ</text>
+
+  <!-- ══════════════════════════════════
+       PM perpendicular label  (right side helper text)
+  ══════════════════════════════════ -->
+  <text font-family="Georgia, serif" font-size="11" x="360" y="238" fill="#888780">PM ⊥ Ray 2 (inc)</text>
+  <text font-family="Georgia, serif" font-size="11" x="360" y="252" fill="#888780">PN ⊥ Ray 2 (ref)</text>
+
+  <!-- ══════════════════════════════════
+       PATH DIFFERENCE LABEL BELOW
+  ══════════════════════════════════ -->
+  <text font-family="Georgia, serif" font-size="13" font-weight="bold"
+        x="340" y="336" text-anchor="middle" fill="#0F6E56">
+    Path difference = MQ + QN = d·sinθ + d·sinθ = 2d·sinθ
+  </text>
+
+  <!-- ══════════════════════════════════
+       BRAGG'S LAW BOX
+  ══════════════════════════════════ -->
+  <rect x="44" y="352" width="590" height="92" rx="10"
+        fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+
+  <!-- condition line -->
+  <text font-family="Georgia, serif" font-size="12" x="340" y="372" text-anchor="middle" fill="#5F5E5A">
+    For constructive interference (bright spot), path difference = nλ
+  </text>
+  <line x1="60" y1="378" x2="618" y2="378" stroke="#185FA5" stroke-width="0.6" stroke-dasharray="3 3"/>
+
+  <!-- the law -->
+  <text font-family="Georgia, serif" font-size="20" font-weight="bold"
+        x="340" y="408" text-anchor="middle" fill="#0C447C">
+    2d sinθ = nλ
+  </text>
+
+  <!-- variable meanings -->
+  <text font-family="Georgia, serif" font-size="11" x="340" y="430" text-anchor="middle" fill="#5F5E5A">
+    d = inter-planar spacing    θ = glancing angle    n = order (1,2,3…)    λ = wavelength of X-ray
+  </text>
+</svg>
